@@ -1,0 +1,34 @@
+.FormData {
+  margin: 20px auto;
+  width: 60%;
+  text-align: center;
+  box-shadow: 3px 3px 5px 2px rgb(160, 160, 160);
+  /* border: 4px solid #eee; */
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 14px 0px 14px 0px;
+  background: #74f0ea; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #0575e6,
+    #74f0ea
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #0575e6,
+    #74f0ea
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.Title {
+  font-family: "Fredoka One", cursive;
+  color: whitesmoke;
+  text-shadow: 3px 4px #6eb4e6;
+  margin-top: 3%;
+}
+
+/* @media (min-width: 600px) {
+  .FormData {
+    width: 500px;
+  }
+} */
