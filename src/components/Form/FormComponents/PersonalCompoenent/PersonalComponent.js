@@ -1,8 +1,24 @@
 import React from "react";
 import { useFormik } from "formik";
 import { Form, Button } from "react-bootstrap";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  fullName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  aboutMe: Yup.string()
+    .min(10, "Too Short!")
+    .max(1000, "Too Long!")
+    .required("Required"),
+  email: Yup.string()
+    .email("Invalid email")
+    .required("Required")
+});
+
 const Personal = (props) => {
-  const formik = useFormik({
+  const {  handleChange, values, errors,handleSubmit } = useFormik({
     initialValues: {
       fullName: "",
       aboutMe: "",
@@ -14,12 +30,14 @@ const Personal = (props) => {
       githubUrl: "",
       linkedinUrl: ""
     },
+    validationSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(values);
+    //   alert(JSON.stringify(values, null, 2));
     }
   });
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Label htmlFor="fullName">Name</Form.Label>
         <Form.Control
@@ -27,9 +45,10 @@ const Personal = (props) => {
           id="fullName"
           name="fullName"
           type="text"
-          onChange={formik.handleChange}
-          value={formik.values.fullName}
+          onChange={handleChange}
+          value={values.fullName}
         />
+        {/* {errors.fullName ? errors.fullName : null} */}
       </Form.Group>
 
       <Form.Group>
@@ -39,8 +58,8 @@ const Personal = (props) => {
           id="aboutMe"
           name="aboutMe"
           type="textarea"
-          onChange={formik.handleChange}
-          value={formik.values.aboutMe}
+          onChange={handleChange}
+          value={values.aboutMe}
         />
         <Form.Text className="text-muted">Maximum 1000 words.</Form.Text>
       </Form.Group>
@@ -51,8 +70,8 @@ const Personal = (props) => {
           placeholder="Enter email address"
           id="email"
           name="email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
+          onChange={handleChange}
+          value={values.email}
         />
       </Form.Group>
       <Form.Group>
@@ -62,8 +81,8 @@ const Personal = (props) => {
           placeholder="Enter your phone number"
           id="phoneNum"
           name="phoneNum"
-          onChange={formik.handleChange}
-          value={formik.values.phoneNumber}
+          onChange={handleChange}
+          value={values.phoneNumber}
         />
       </Form.Group>
       <Form.Group>
@@ -73,8 +92,8 @@ const Personal = (props) => {
           placeholder="Enter your country"
           id="country"
           name="country"
-          onChange={formik.handleChange}
-          value={formik.values.country}
+          onChange={handleChange}
+          value={values.country}
         />
       </Form.Group>
       <Form.Group>
@@ -84,8 +103,8 @@ const Personal = (props) => {
           placeholder="Enter your state"
           id="state"
           name="state"
-          onChange={formik.handleChange}
-          value={formik.values.state}
+          onChange={handleChange}
+          value={values.state}
         />
       </Form.Group>
       <Form.Group>
@@ -95,8 +114,8 @@ const Personal = (props) => {
           placeholder="Enter your city"
           id="city"
           name="city"
-          onChange={formik.handleChange}
-          value={formik.values.city}
+          onChange={handleChange}
+          value={values.city}
         />
       </Form.Group>
       <Form.Group>
@@ -106,8 +125,8 @@ const Personal = (props) => {
           placeholder="Enter your githubUrl"
           id="githubUrl"
           name="githubUrl"
-          onChange={formik.handleChange}
-          value={formik.values.githubUrl}
+          onChange={handleChange}
+          value={values.githubUrl}
         />
       </Form.Group>
       <Form.Group>
@@ -117,13 +136,11 @@ const Personal = (props) => {
           placeholder="Enter your linkedInUrl"
           id="linkedinUrl"
           name="linkedinUrl"
-          onChange={formik.handleChange}
-          value={formik.values.linkedinUrl}
+          onChange={handleChange}
+          value={values.linkedinUrl}
         />
       </Form.Group>
-      <Button type="submit">
-        Submit
-      </Button>
+      <Button type="submit">Submit</Button>
     </Form>
   );
 };
