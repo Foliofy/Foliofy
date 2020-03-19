@@ -14,16 +14,32 @@ const validationSchema = Yup.object().shape({
     .required("Required"),
   email: Yup.string()
     .email("Invalid email")
+    .required("Required"),
+    phoneNum: Yup.number()
+    .min(12, "Invalid Number")
+    .positive("Enter a valid Number")
+    .required("Required"),
+    country: Yup.string()
+    .required("Required"),
+    state: Yup.string()
+    .required("Required"),
+    city: Yup.string()
+    .required("Required"),
+    githubUrl: Yup.string()
+    .url("Enter a valid Url")
+    .required("Required"),
+    linkedinUrl: Yup.string()
+    .url("Enter a valid Url")
     .required("Required")
 });
 
-const Personal = (props) => {
+const Personal = () => {
   const {  handleChange, values, errors,handleSubmit } = useFormik({
     initialValues: {
       fullName: "",
       aboutMe: "",
       email: "",
-      phoneNumber: "",
+      phoneNum: "",
       country: "",
       state: "",
       city: "",
@@ -33,6 +49,7 @@ const Personal = (props) => {
     validationSchema,
     onSubmit: values => {
       console.log(values);
+      console.log(validationSchema);
     //   alert(JSON.stringify(values, null, 2));
     }
   });
@@ -47,8 +64,13 @@ const Personal = (props) => {
           type="text"
           onChange={handleChange}
           value={values.fullName}
+          isInvalid={!!errors.fullName}
         />
-        {/* {errors.fullName ? errors.fullName : null} */}
+        <Form.Control.Feedback type="invalid">
+          {errors.fullName} 
+        </Form.Control.Feedback>
+          
+         
       </Form.Group>
 
       <Form.Group>
@@ -61,7 +83,9 @@ const Personal = (props) => {
           onChange={handleChange}
           value={values.aboutMe}
         />
+        
         <Form.Text className="text-muted">Maximum 1000 words.</Form.Text>
+        {errors.aboutMe ? errors.aboutMe : null}
       </Form.Group>
       <Form.Group>
         <Form.Label htmlFor="email">Email</Form.Label>
@@ -73,6 +97,7 @@ const Personal = (props) => {
           onChange={handleChange}
           value={values.email}
         />
+        {errors.email ? errors.email : null}
       </Form.Group>
       <Form.Group>
         <Form.Label htmlFor="phoneNum">Contact Number</Form.Label>
@@ -82,8 +107,9 @@ const Personal = (props) => {
           id="phoneNum"
           name="phoneNum"
           onChange={handleChange}
-          value={values.phoneNumber}
+          value={values.phoneNum}
         />
+        {errors.phoneNum ? errors.phoneNum : null}
       </Form.Group>
       <Form.Group>
         <Form.Label htmlFor="country">Country</Form.Label>
@@ -95,6 +121,7 @@ const Personal = (props) => {
           onChange={handleChange}
           value={values.country}
         />
+        {errors.country ? errors.country : null}
       </Form.Group>
       <Form.Group>
         <Form.Label htmlFor="state">State</Form.Label>
@@ -106,6 +133,7 @@ const Personal = (props) => {
           onChange={handleChange}
           value={values.state}
         />
+        {errors.state ? errors.state : null}
       </Form.Group>
       <Form.Group>
         <Form.Label htmlFor="city">City</Form.Label>
@@ -117,6 +145,7 @@ const Personal = (props) => {
           onChange={handleChange}
           value={values.city}
         />
+        {errors.city ? errors.city : null}
       </Form.Group>
       <Form.Group>
         <Form.Label htmlFor="githubUrl">Github URL</Form.Label>
@@ -128,6 +157,7 @@ const Personal = (props) => {
           onChange={handleChange}
           value={values.githubUrl}
         />
+        {errors.githubUrl ? errors.githubUrl : null}
       </Form.Group>
       <Form.Group>
         <Form.Label htmlFor="linkedinUrl">LinkedIn URL</Form.Label>
@@ -139,6 +169,7 @@ const Personal = (props) => {
           onChange={handleChange}
           value={values.linkedinUrl}
         />
+        {errors.linkedinUrl ? errors.linkedinUrl : null}
       </Form.Group>
       <Button type="submit">Submit</Button>
     </Form>
