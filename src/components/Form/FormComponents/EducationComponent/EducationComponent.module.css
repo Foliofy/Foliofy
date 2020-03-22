@@ -1,0 +1,8 @@
+.heading {
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    position: relative;
+    top: 2%; 
+    padding: 10px;
+}
