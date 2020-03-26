@@ -3,28 +3,25 @@ import * as Yup from "yup";
 import { Form, Button, Container, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 import styles from "./EducationComponent.module.css";
-import { Link, Route, Switch, BrowserRouter } from "react-router-dom";
-import Experience from "../ExperienceComponent/ExperienceComponent";
+import { connect } from "react-redux";
 
 const validationSchema = Yup.object().shape({
   instituteName: Yup.string()
     .min(2, "Too Short!")
     .required("Required"),
   degree: Yup.string()
-    .ensure()
     .required("Degree is Required"),
   speacialization: Yup.string()
     .min(2, "Too Short!")
     .required("Speacialization is Required"),
   other: Yup.string()
-    .required("Degree is required")
     .min(2, "Too Short"),
   graduationStart: Yup.date().max(new Date(), "Invalid Date"),
   graduationEnd: Yup.date().max(new Date(), "Invalid Date"),
   percentage: Yup.number().positive("Invalid Percentage")
 });
 
-const Education = () => {
+const Education = (props) => {
   const {
     handleSubmit,
     handleChange,
@@ -44,12 +41,14 @@ const Education = () => {
       percentage: ""
     },
     validationSchema,
-    onSubmit: values => {
+    onSubmit: () => {
       console.log(values);
+      props.onNextButton(values);
+      
+      console.log(props.a);
     }
   });
   return (
-    <BrowserRouter>
     <Container>
       <h3 className={styles.heading}>Education Details</h3>
       <Form onSubmit={handleSubmit}>
@@ -194,15 +193,21 @@ const Education = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Button type="submit">Add Education</Button>
-        <Link to="/experience">Next</Link>
+        
       </Form>
       
     </Container>
-    <Switch>
-    <Route path="/experience" exact component={Experience} />
-  </Switch>
-  </BrowserRouter>
   );
 };
+const mapStateToProps = state => {
+  return{
+    a: state.education.eduArray
+  }; 
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    onNextButton: values => dispatch({ type: "ADD_EDUCATION", payload: values })
+  };
+};
 
-export default Education;
+export default connect(mapStateToProps, mapDispatchToProps)(Education);
