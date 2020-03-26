@@ -3,6 +3,9 @@ import * as Yup from "yup";
 import { Form, Button, Container, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 import styles from "./EducationComponent.module.css";
+import { Link, Route, Switch, BrowserRouter } from "react-router-dom";
+import Experience from "../ExperienceComponent/ExperienceComponent";
+
 const validationSchema = Yup.object().shape({
   instituteName: Yup.string()
     .min(2, "Too Short!")
@@ -46,6 +49,7 @@ const Education = () => {
     }
   });
   return (
+    <BrowserRouter>
     <Container>
       <h3 className={styles.heading}>Education Details</h3>
       <Form onSubmit={handleSubmit}>
@@ -68,41 +72,43 @@ const Education = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Row>
-        <Form.Group as={Col} md="6">
-          <Form.Label htmlFor="degree">Degree</Form.Label>
-          <Form.Control
-            id="degree"
-            as="select"
-            value={values.degree}
-            isInvalid={!!errors.degree}
-            onBlur={handleBlur}
-            onChange={handleChange}
-          >
-            <option value="B.Tech">B.Tech/B.S</option>
-            <option value="M.Tech">M.Tech/M.S</option>
-            <option value="PhD">PhD</option>
-            <option value="highSchool">High School</option>
-            <option value="other">Other</option>
-          </Form.Control>
-        </Form.Group>
-        {values.degree === "other" ? (
           <Form.Group as={Col} md="6">
-            <Form.Label htmlFor="other">Please mention your degree</Form.Label>
+            <Form.Label htmlFor="degree">Degree</Form.Label>
             <Form.Control
-              id="other"
-              type="text"
-              placeholder="Mention your degree"
-              name="other"
+              id="degree"
+              as="select"
+              value={values.degree}
+              isInvalid={!!errors.degree}
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.other}
-              isInvalid={errors.other && touched.other}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.other && touched.other && errors.other}
-            </Form.Control.Feedback>
+            >
+              <option value="B.Tech">B.Tech/B.S</option>
+              <option value="M.Tech">M.Tech/M.S</option>
+              <option value="PhD">PhD</option>
+              <option value="highSchool">High School</option>
+              <option value="other">Other</option>
+            </Form.Control>
           </Form.Group>
-        ) : null}
+          {values.degree === "other" ? (
+            <Form.Group as={Col} md="6">
+              <Form.Label htmlFor="other">
+                Please mention your degree
+              </Form.Label>
+              <Form.Control
+                id="other"
+                type="text"
+                placeholder="Mention your degree"
+                name="other"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.other}
+                isInvalid={errors.other && touched.other}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.other && touched.other && errors.other}
+              </Form.Control.Feedback>
+            </Form.Group>
+          ) : null}
         </Form.Row>
 
         <Form.Group>
@@ -140,17 +146,16 @@ const Education = () => {
               touched.graduationStart &&
               errors.graduationStart}
           </Form.Control.Feedback>
-          
         </Form.Group>
         <Form.Group>
-            <Form.Check
-              type="checkbox"
-              label="Present"
-              id="present"
-              value={values.present}
-              onChange={handleChange}
-            />
-          </Form.Group>
+          <Form.Check
+            type="checkbox"
+            label="Present"
+            id="present"
+            value={values.present}
+            onChange={handleChange}
+          />
+        </Form.Group>
         {values.present === false ? (
           <Form.Group>
             <Form.Label htmlFor="graduationEnd">End Year</Form.Label>
@@ -189,9 +194,14 @@ const Education = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Button type="submit">Add Education</Button>
-        <Button type="submit" size="lg">Next</Button>
+        <Link to="/experience">Next</Link>
       </Form>
+      
     </Container>
+    <Switch>
+    <Route path="/experience" exact component={Experience} />
+  </Switch>
+  </BrowserRouter>
   );
 };
 
