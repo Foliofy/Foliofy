@@ -3,13 +3,14 @@ import { Form, Button, Container } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import styles from "./AbilitiesComponent.module.css";
+import {connect} from "react-redux";
 
 const validationSchema = Yup.object().shape({
   skills: Yup.string().required("Atleast one skill is required"),
   achievements: Yup.string().min(10, "Too Short!")
 });
 
-const Abilities = () => {
+const Abilities = (props) => {
   const {
     handleSubmit,
     handleChange,
@@ -26,8 +27,8 @@ const Abilities = () => {
       achievements: ""
     },
     validationSchema,
-    onSubmit: values => {
-      console.log(values);
+    onSubmit: () => {
+      props.onNextButton(values);
     }
   });
 
@@ -95,4 +96,11 @@ const Abilities = () => {
   );
 };
 
-export default Abilities;
+const mapDispatchToProps = dispatch => {
+  return {
+    onNextButton: values => dispatch({ type: "ADD_ABILITIES", payload: values })
+  };
+};
+
+
+export default connect(null,mapDispatchToProps)(Abilities);

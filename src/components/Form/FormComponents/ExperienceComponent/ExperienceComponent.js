@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import { Form, Button, Container, Col } from "react-bootstrap";
 import styles from "./ExperienceComponent.module.css"
 import * as Yup from "yup";
+import {connect} from "react-redux";
 
 const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -22,7 +23,7 @@ const validationSchema = Yup.object().shape({
         .max(1000, "Too Long")
 });
 
-const Experience = () => {
+const Experience = (props) => {
     const { handleChange, values, errors, handleSubmit, handleBlur, touched } = useFormik({
         initialValues:{
             title: "",
@@ -33,8 +34,8 @@ const Experience = () => {
             present: false
         },
         validationSchema,
-        onSubmit: values => {
-            console.log(values);
+        onSubmit: () => {
+            props.onNextButton(values);
         }
     });
 
@@ -135,10 +136,16 @@ const Experience = () => {
                     {errors.tasks && touched.tasks && errors.tasks}
                 </Form.Control.Feedback>
             </Form.Group>
-            <Button  size="lg" type="submit">Next</Button>
+            <Button  size="lg" type="submit">Add Experience</Button>
         </Form>
     </Container>
     );
 };
 
-export default Experience;
+const mapDispatchToProps = dispatch => {
+    return {
+      onNextButton: values => dispatch({ type: "ADD_EXPERIENCE", payload: values })
+    };
+  };
+
+export default connect(null,mapDispatchToProps)(Experience);

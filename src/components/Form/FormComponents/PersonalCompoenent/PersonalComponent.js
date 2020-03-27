@@ -3,8 +3,6 @@ import { useFormik } from "formik";
 import { Form, Button, Col, Container } from "react-bootstrap";
 import * as Yup from "yup";
 import styles from "./PersonalComponent.module.css";
-import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
-import Education from "../EducationComponent/EducationComponent";
 import { connect } from "react-redux";
 
 const validationSchema = Yup.object().shape({
@@ -34,6 +32,7 @@ const validationSchema = Yup.object().shape({
     .required("Required")
 });
 
+
 const Personal = props => {
   const {
     handleChange,
@@ -60,7 +59,7 @@ const Personal = props => {
     }
   });
   return (
-    <BrowserRouter>
+    
       <Container>
         <h3 className={styles.heading}>Personal Details</h3>
         <Form onSubmit={handleSubmit}>
@@ -205,22 +204,12 @@ const Personal = props => {
               </Form.Control.Feedback>
             </Form.Group>
           </Form.Row>
-          {/* <Link to="/education" onClick={props.onNextButton}>Next</Link> */}
           <Button type="submit">NEXT</Button>
         </Form>
       </Container>
-      <Switch>
-        <Route path="/education" exact component={Education} />
-      </Switch>
-    </BrowserRouter>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    prsnl: state.personal
-  };
-};
 
 const mapDispacthToPros = dispatch => {
   return {
@@ -228,4 +217,4 @@ const mapDispacthToPros = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispacthToPros)(Personal);
+export default connect(null, mapDispacthToPros)(Personal);
