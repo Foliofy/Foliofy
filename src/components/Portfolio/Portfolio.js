@@ -1,8 +1,12 @@
 import React from 'react';
-import EducationScreen from "./PortfolioComponents/EducationScreen/EducationScreen";
-const portfolio = (props) => (
+import Cover from "./PortfolioComponents/CoverScreen/CoverScreen"
+import AboutMe from "./PortfolioComponents/AboutMeScreen/AboutMeScreen"
+import Education from "./PortfolioComponents/EducationScreen/EducationScreen"
+const portfolio = () => (
     <React.Fragment>
-        <EducationScreen />
+        <Cover />
+        <AboutMe />
+        <Education />
     </React.Fragment>
 )
 

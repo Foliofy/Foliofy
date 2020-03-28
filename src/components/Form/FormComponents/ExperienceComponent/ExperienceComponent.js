@@ -33,17 +33,23 @@ const Experience = (props) => {
             tasks: "",
             present: false
         },
+<<<<<<< HEAD
         validationSchema,
         onSubmit: (values) => {
             props.onAddButton(values);
             
+=======
+        // validationSchema,
+        onSubmit: () => {
+            props.onAddButton(values);
+>>>>>>> 2dec3eacc5414311507db21425d18826dff61e81
         }
     });
 
 
     return(
     <Container>
-        <h1 className={styles.heading}>Experience</h1>
+        <h3 className={styles.heading}>Experience</h3>
         <Form onSubmit={handleSubmit}>
             <Form.Row>
             <Form.Group as={Col} lg="6">
@@ -97,7 +103,7 @@ const Experience = (props) => {
             </Form.Group>
             {values.present === false ? (
             <Form.Group >
-                <Form.Label htmlFor="endDate">end Date</Form.Label>
+                <Form.Label htmlFor="endDate">End Date</Form.Label>
                 <Form.Control
                     id="endDate"
                     name="endDate"
@@ -138,7 +144,11 @@ const Experience = (props) => {
                     {errors.tasks && touched.tasks && errors.tasks}
                 </Form.Control.Feedback>
             </Form.Group>
+<<<<<<< HEAD
             <Button type="submit">Add Experience</Button>
+=======
+            <Button  size="lg" type="submit">Add Experience</Button>
+>>>>>>> 2dec3eacc5414311507db21425d18826dff61e81
             <Button onClick={() => props.onNextButton()}>NEXT</Button>
         </Form>
        

@@ -26,7 +26,7 @@ const Abilities = (props) => {
       hobbies: "",
       achievements: ""
     },
-    validationSchema,
+    // validationSchema,
     onSubmit: () => {
       props.onNextButton(values);
     }
