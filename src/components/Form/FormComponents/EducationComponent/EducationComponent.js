@@ -42,7 +42,7 @@ const Education = (props) => {
     },
     validationSchema,
     onSubmit: () => {
-      props.onNextButton(values);
+      props.onAddButton(values);
     }
   });
   return (
@@ -190,20 +190,18 @@ const Education = (props) => {
           </Form.Control.Feedback>
         </Form.Group>
         <Button type="submit">Add Education</Button>
+        <Button onClick={() => props.onNextButton()}>NEXT</Button>
       </Form>
       
     </Container>
   );
 };
-const mapStateToProps = state => {
-  return{
-    a: state.education.eduArray
-  }; 
-}
+
 const mapDispatchToProps = dispatch => {
   return {
-    onNextButton: values => dispatch({ type: "ADD_EDUCATION", payload: values })
+    onAddButton: values => dispatch({ type: "ADD_EDUCATION", payload: values }),
+    onNextButton: () => dispatch({type: "GO_EXPERIENCE"})
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Education);
+export default connect(null, mapDispatchToProps)(Education);

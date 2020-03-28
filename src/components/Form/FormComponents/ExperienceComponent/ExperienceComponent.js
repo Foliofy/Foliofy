@@ -34,10 +34,12 @@ const Experience = (props) => {
             present: false
         },
         validationSchema,
-        onSubmit: () => {
-            props.onNextButton(values);
+        onSubmit: (values) => {
+            props.onAddButton(values);
+            
         }
     });
+
 
     return(
     <Container>
@@ -136,16 +138,18 @@ const Experience = (props) => {
                     {errors.tasks && touched.tasks && errors.tasks}
                 </Form.Control.Feedback>
             </Form.Group>
-            <Button  size="lg" type="submit">Add Experience</Button>
+            <Button type="submit">Add Experience</Button>
+            <Button onClick={() => props.onNextButton()}>NEXT</Button>
         </Form>
+       
     </Container>
     );
 };
-
 const mapDispatchToProps = dispatch => {
     return {
-      onNextButton: values => dispatch({ type: "ADD_EXPERIENCE", payload: values })
+      onAddButton: values => dispatch({ type: "ADD_EXPERIENCE", payload: values }),
+      onNextButton: () => dispatch({type: "GO_ABILITIES"})
     };
   };
 
-export default connect(null,mapDispatchToProps)(Experience);
+export default connect(null, mapDispatchToProps)(Experience);
