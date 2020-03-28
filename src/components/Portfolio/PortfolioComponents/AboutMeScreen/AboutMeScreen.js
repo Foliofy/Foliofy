@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import "./AboutMeScreen.css"
+import "./AboutMeScreen.css";
+
 const aboutMe = (props) => (
     <Container className='AboutMe'>
        <h2 className="AboutMeHead">About Me</h2>

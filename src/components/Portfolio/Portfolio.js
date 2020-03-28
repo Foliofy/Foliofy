@@ -2,11 +2,11 @@ import React from 'react';
 import Cover from "./PortfolioComponents/CoverScreen/CoverScreen"
 import AboutMe from "./PortfolioComponents/AboutMeScreen/AboutMeScreen"
 import Education from "./PortfolioComponents/EducationScreen/EducationScreen"
-const portfolio = (props) => (
+const portfolio = () => (
     <React.Fragment>
-        <Cover name={props.formData.name.value}/>
-        <AboutMe aboutMe={props.formData.aboutMe.value}/>
-        <Education eduQual={props.formData.education}/>
+        <Cover />
+        <AboutMe />
+        <Education />
     </React.Fragment>
 )
 

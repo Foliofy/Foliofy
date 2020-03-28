@@ -57,8 +57,7 @@ const reducer = (state = initialState, action) => {
         education: {
           ...state.education,
           eduArray: [...state.education.eduArray.concat(action.payload)]
-        },
-        isExperience: true
+        }
       };
     case "ADD_EXPERIENCE":
       return {
@@ -66,8 +65,7 @@ const reducer = (state = initialState, action) => {
         experience: {
           ...state.experience,
           expArray: [...state.experience.expArray.concat(action.payload)]
-        },
-        isAbilities: true
+        }
       };
     case "ADD_ABILITIES":
       console.log(state);
@@ -88,7 +86,18 @@ const reducer = (state = initialState, action) => {
           ],
           achievements: action.payload.achievements
         },
-        isPortfolio: false
+        isPortfolio: true
+      };
+    case "GO_EXPERIENCE":
+      return {
+        ...state,
+        isExperience: true
+      };
+
+    case "GO_ABILITIES":
+      return {
+        ...state,
+        isAbilities: true
       };
     default:
       return state;

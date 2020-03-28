@@ -35,13 +35,13 @@ const Experience = (props) => {
         },
         validationSchema,
         onSubmit: () => {
-            props.onNextButton(values);
+            props.onAddButton(values);
         }
     });
 
     return(
     <Container>
-        <h1 className={styles.heading}>Experience</h1>
+        <h3 className={styles.heading}>Experience</h3>
         <Form onSubmit={handleSubmit}>
             <Form.Row>
             <Form.Group as={Col} lg="6">
@@ -95,7 +95,7 @@ const Experience = (props) => {
             </Form.Group>
             {values.present === false ? (
             <Form.Group >
-                <Form.Label htmlFor="endDate">end Date</Form.Label>
+                <Form.Label htmlFor="endDate">End Date</Form.Label>
                 <Form.Control
                     id="endDate"
                     name="endDate"
@@ -137,6 +137,7 @@ const Experience = (props) => {
                 </Form.Control.Feedback>
             </Form.Group>
             <Button  size="lg" type="submit">Add Experience</Button>
+            <Button onClick={() => props.onNextButton()}>NEXT</Button>
         </Form>
     </Container>
     );
@@ -144,7 +145,8 @@ const Experience = (props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-      onNextButton: values => dispatch({ type: "ADD_EXPERIENCE", payload: values })
+      onAddButton: values => dispatch({ type: "ADD_EXPERIENCE", payload: values }),
+      onNextButton: () => dispatch({type: "GO_ABILITIES"})
     };
   };
 

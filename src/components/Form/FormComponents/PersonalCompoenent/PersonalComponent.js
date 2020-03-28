@@ -21,9 +21,7 @@ const validationSchema = Yup.object().shape({
     .min(12, "Invalid Number")
     .positive("Enter a valid Number")
     .required("Required"),
-  country: Yup.string().required("Required"),
-  state: Yup.string().required("Required"),
-  city: Yup.string().required("Required"),
+  headline: Yup.string().required("Required"),
   githubUrl: Yup.string()
     .url("Enter a valid Url")
     .required("Required"),
@@ -47,9 +45,7 @@ const Personal = props => {
       aboutMe: "",
       email: "",
       phoneNum: "",
-      country: "",
-      state: "",
-      city: "",
+      headline: "",
       githubUrl: "",
       linkedinUrl: ""
     },
@@ -133,38 +129,14 @@ const Personal = props => {
             </Form.Group>
           </Form.Row>
           <Form.Group>
-            <Form.Label htmlFor="country">Country</Form.Label>
+            <Form.Label htmlFor="headline">headline</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter your country"
-              id="country"
-              name="country"
+              placeholder="Ypur custom tagline"
+              id="headline"
+              name="headline"
               onChange={handleChange}
-              value={values.country}
-              onBlur={handleBlur}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label htmlFor="state">State</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter your state"
-              id="state"
-              name="state"
-              onChange={handleChange}
-              value={values.state}
-              onBlur={handleBlur}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label htmlFor="city">City</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter your city"
-              id="city"
-              name="city"
-              onChange={handleChange}
-              value={values.city}
+              value={values.headline}
               onBlur={handleBlur}
             />
           </Form.Group>

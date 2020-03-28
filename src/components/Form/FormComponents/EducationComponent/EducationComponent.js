@@ -42,7 +42,7 @@ const Education = (props) => {
     },
     validationSchema,
     onSubmit: () => {
-      props.onNextButton(values);
+      props.onAddButton(values);
     }
   });
   return (
@@ -191,7 +191,7 @@ const Education = (props) => {
         </Form.Group>
         <Button type="submit">Add Education</Button>
       </Form>
-      
+      <Button onClick={() => props.onNextButton()}>NEXT</Button>
     </Container>
   );
 };
@@ -202,7 +202,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    onNextButton: values => dispatch({ type: "ADD_EDUCATION", payload: values })
+    onAddButton: values => dispatch({ type: "ADD_EDUCATION", payload: values }),
+    onNextButton: () => dispatch({type: "GO_EXPERIENCE"})
   };
 };
 
