@@ -6,7 +6,6 @@ const portfolio = () => (
     <React.Fragment>
         <Cover />
         <AboutMe />
-        <Education />
     </React.Fragment>
 )
 

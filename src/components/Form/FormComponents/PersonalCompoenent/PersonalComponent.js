@@ -49,7 +49,7 @@ const Personal = props => {
       githubUrl: "",
       linkedinUrl: ""
     },
-    validationSchema,
+    // validationSchema,
     onSubmit: () => {
       props.onNextButton(values);
     }

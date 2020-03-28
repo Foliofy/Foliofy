@@ -1,16 +1,22 @@
 .name {
-    padding-top: 23%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 450%;
-    color: white;
+  padding-top: 20%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 480%;
+  color: white;
+}
+
+.Tagline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120%;
+  color: white;
 }
 
 .coverscreen {
-    height: 100vh;
-    width: 100vh;
+  height: 100vh;
+  width: 100vh;
 }
-
-

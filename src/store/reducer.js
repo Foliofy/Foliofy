@@ -3,9 +3,7 @@ const initialState = {
     fullName: "",
     email: "",
     aboutMe: "",
-    country: "",
-    state: "",
-    city: "",
+    headline: "",
     phoneNum: "",
     githubUrl: "",
     linkedinUrl: ""
@@ -40,9 +38,7 @@ const reducer = (state = initialState, action) => {
           fullName: action.payload.fullName,
           aboutMe: action.payload.aboutMe,
           email: action.payload.email,
-          country: action.payload.country,
-          city: action.payload.city,
-          state: action.payload.state,
+          headline: action.payload.headline,
           phoneNum: action.payload.phoneNum,
           githubUrl: action.payload.githubUrl,
           linkedinUrl: action.payload.linkedinUrl

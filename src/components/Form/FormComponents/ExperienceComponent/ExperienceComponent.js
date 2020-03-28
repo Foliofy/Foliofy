@@ -33,7 +33,7 @@ const Experience = (props) => {
             tasks: "",
             present: false
         },
-        validationSchema,
+        // validationSchema,
         onSubmit: () => {
             props.onAddButton(values);
         }
