@@ -40,7 +40,7 @@ const Education = (props) => {
       graduationEnd: "",
       percentage: ""
     },
-    // validationSchema,
+    validationSchema,
     onSubmit: () => {
       props.onAddButton(values);
     }

@@ -7,11 +7,10 @@ const cover = props => (
     <Container className="coverscreen">
       <h1 className="name">{props.prsnl.fullName}</h1>
       <h3 className="Tagline">{props.prsnl.headline}</h3>
-    <h4 className="Tagline">
-      E-mail : {props.prsnl.email} | Contact : {props.prsnl.phoneNum}
-    </h4>
+      <h4 className="Tagline">
+        E-mail : {props.prsnl.email} | Contact : {props.prsnl.phoneNum}
+      </h4>
     </Container>
-    
   </React.Fragment>
 );
 
