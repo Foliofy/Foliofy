@@ -1,10 +1,10 @@
-.Education {
+.Experience {
     background-color: white;
     padding: 10px;
     border: 3px solid rgb(149, 149, 149);
 }
 
-.EducationHead {
+.ExperienceHead {
     display: inline-flexbox;
     justify-content: center;
     word-wrap: break-word;

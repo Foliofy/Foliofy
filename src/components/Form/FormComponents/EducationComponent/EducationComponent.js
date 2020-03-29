@@ -190,7 +190,6 @@ const Education = (props) => {
           </Form.Control.Feedback>
         </Form.Group>
         <Button type="submit">Add Education</Button>
-        <Button onClick={() => props.onNextButton()}>NEXT</Button>
       </Form>
       <Button onClick={() => props.onNextButton()}>NEXT</Button>
     </Container>

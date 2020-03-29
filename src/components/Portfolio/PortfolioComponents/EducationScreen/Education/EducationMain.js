@@ -22,12 +22,11 @@ const EducationMain = (props) => {
             <h2 className={styles.EducationHead}>Education</h2>
         <Card.Body >
         <Card.Title className>{props.instituteName}</Card.Title>
-        <Card.Subtitle className="mb-2">{degree}</Card.Subtitle>
-        <Card.Subtitle className="mb-2">{endDate}</Card.Subtitle><hr />
+        <Card.Subtitle className="mb-2">{degree}</Card.Subtitle> <hr/>
         <Card.Subtitle className="mb-2">{props.speacialization}</Card.Subtitle>
-        <Card.Subtitle className="mb-2">{props.graduationStart}</Card.Subtitle><hr/>
+        <Card.Subtitle className="mb-2">{props.graduationStart} | {endDate}</Card.Subtitle><hr/>
         <Card.Text>
-            {props.percentage}
+           Percentage/CGPA : {props.percentage}
         </Card.Text>
         </Card.Body>
     </Container>
