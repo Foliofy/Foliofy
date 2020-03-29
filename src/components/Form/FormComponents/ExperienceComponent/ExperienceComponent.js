@@ -33,7 +33,7 @@ const Experience = (props) => {
             tasks: "",
             present: false
         },
-        validationSchema,
+        // validationSchema,
         onSubmit: () => {
             props.onAddButton(values);
         }
@@ -137,7 +137,7 @@ const Experience = (props) => {
                     {errors.tasks && touched.tasks && errors.tasks}
                 </Form.Control.Feedback>
             </Form.Group>
-            <Button  size="lg" type="submit">Add Experience</Button>
+            <Button type="submit">Add Experience</Button>
             <Button onClick={() => props.onNextButton()}>NEXT</Button>
         </Form>
        

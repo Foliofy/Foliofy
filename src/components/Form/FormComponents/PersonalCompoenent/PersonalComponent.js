@@ -132,7 +132,7 @@ const Personal = props => {
             <Form.Label htmlFor="headline">headline</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Ypur custom tagline"
+              placeholder="Your custom tagline"
               id="headline"
               name="headline"
               onChange={handleChange}

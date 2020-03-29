@@ -5,9 +5,14 @@
 }
 
 .AbilitiesHead {
-    display: inline-flexbox;
-    justify-content: center;
+    display: flex;
+    justify-content: space-evenly;
     word-wrap: break-word;
     /* position: absolute; */
     padding: 10px;
+}
+
+.AbilitiesDisplay{
+    display: flex;
+    justify-content: space-evenly;
 }
