@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import {Navbar} from "react-bootstrap";
-import linkedIn from "/Users/apple/Desktop/FoliofyOrg/src/assets/images/linked.png"
+import linkedIn from "../../../../assets/images/linked.png"
 const footerPort = (props) => {
     return (
         <Navbar bg="dark" variant="dark" fixed="bottom">
         <Navbar.Brand href={props.prsnl.linkedinUrl}>
           <img
+            alt="LinkedIn"
             src={linkedIn}
             width="30"
             height="30"

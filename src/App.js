@@ -4,7 +4,19 @@ import Header from "../src/components/header/Header";
 import Form from "../src/components/Form/Form";
 import StartupPage from "../src/components/StartupPage/StartupPage";
 
-// import Particles from "../src/components/Particle/ParticleComponent"
+ import Particles from "react-particles-js";
+
+ const particleOpt = {
+   particles : {
+     number : {
+       value : 50,
+       density : {
+         enable: true,
+         value_area : 800
+       }
+     }
+   }
+ }
 class App extends React.Component {
   constructor() {
     super();
@@ -27,7 +39,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        {/* <Particles /> */}
+        <Particles params={particleOpt} className="Particle-Layer"/> 
         {/* <Particles className="Particle-Layer" /> */}
         {displayElement}
       </React.Fragment>
