@@ -7,6 +7,7 @@ const footerPort = (props) => {
         <Navbar bg="dark" variant="dark" fixed="bottom">
         <Navbar.Brand href={props.prsnl.linkedinUrl}>
           <img
+            alt="linkedIn-URL"
             src={linkedIn}
             width="30"
             height="30"

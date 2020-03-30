@@ -4,7 +4,6 @@ import Header from "../src/components/header/Header";
 import Form from "../src/components/Form/Form";
 import StartupPage from "../src/components/StartupPage/StartupPage";
 
-// import Particles from "../src/components/Particle/ParticleComponent"
 class App extends React.Component {
   constructor() {
     super();
@@ -27,8 +26,6 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        {/* <Particles /> */}
-        {/* <Particles className="Particle-Layer" /> */}
         {displayElement}
       </React.Fragment>
     );
