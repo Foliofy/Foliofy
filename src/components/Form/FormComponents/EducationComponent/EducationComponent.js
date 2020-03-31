@@ -9,19 +9,17 @@ const validationSchema = Yup.object().shape({
   instituteName: Yup.string()
     .min(2, "Too Short!")
     .required("Required"),
-  degree: Yup.string()
-    .required("Degree is Required"),
+  degree: Yup.string().required("Degree is Required"),
   speacialization: Yup.string()
     .min(2, "Too Short!")
     .required("Speacialization is Required"),
-  other: Yup.string()
-    .min(2, "Too Short"),
+  other: Yup.string().min(2, "Too Short"),
   graduationStart: Yup.date().max(new Date(), "Invalid Date"),
   graduationEnd: Yup.date().max(new Date(), "Invalid Date"),
   percentage: Yup.number().positive("Invalid Percentage")
 });
 
-const Education = (props) => {
+const Education = props => {
   const {
     handleSubmit,
     handleChange,
@@ -42,6 +40,7 @@ const Education = (props) => {
     },
     validationSchema,
     onSubmit: () => {
+      // document.getElementById("next").disabled = false;
       props.onAddButton(values);
     }
   });
@@ -78,8 +77,8 @@ const Education = (props) => {
               onBlur={handleBlur}
               onChange={handleChange}
             >
-              <option value="B.Tech">B.Tech/B.S</option>
-              <option value="M.Tech">M.Tech/M.S</option>
+              <option value="pg">PG</option>
+              <option value="ug">UG</option>
               <option value="PhD">PhD</option>
               <option value="highSchool">High School</option>
               <option value="other">Other</option>
@@ -113,7 +112,7 @@ const Education = (props) => {
             id="speacialization"
             onBlur={handleBlur}
             type="text"
-            placeholder="Enter your Specialization"
+            placeholder="Enter your Specialization (Course - Degree Name)"
             name="speacialization"
             onChange={handleChange}
             value={values.speacialization}
@@ -191,7 +190,9 @@ const Education = (props) => {
         </Form.Group>
         <Button type="submit">Add Education</Button>
       </Form>
-      <Button onClick={() => props.onNextButton()}>NEXT</Button>
+      <Button id="next" onClick={() => props.onNextButton()}>
+        NEXT
+      </Button>
     </Container>
   );
 };
@@ -199,7 +200,7 @@ const Education = (props) => {
 const mapDispatchToProps = dispatch => {
   return {
     onAddButton: values => dispatch({ type: "ADD_EDUCATION", payload: values }),
-    onNextButton: () => dispatch({type: "GO_EXPERIENCE"})
+    onNextButton: () => dispatch({ type: "GO_EXPERIENCE" })
   };
 };
 

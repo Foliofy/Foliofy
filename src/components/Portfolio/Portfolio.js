@@ -6,7 +6,7 @@ import Experience from "./PortfolioComponents/ExperienceScreen/ExperienceScreen"
 import Abilities from "./PortfolioComponents/AbilitiesScreen/AbilitiesScreen"
 import Footer from "./PortfolioComponents/FooterScreen/Footer"
 const portfolio = () => (
-    <React.Fragment>
+    <React.Fragment >
         <Cover />
         <AboutMe />
         <hr/>

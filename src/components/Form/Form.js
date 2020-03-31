@@ -6,8 +6,10 @@ import Experience from "../Form/FormComponents/ExperienceComponent/ExperienceCom
 import Abilities from "../Form/FormComponents/AbilitiesComponent/AbilitiesComponent";
 import Portfolio from "../Portfolio/Portfolio"
 import { connect } from "react-redux";
+import Header from "../header/Header"
 
 const form = (props) => {
+  let companyHeader = <Header />;
   let showComponent = <Personal />;
   if (props.showEducation === true){
     showComponent = <Education />
@@ -20,9 +22,11 @@ const form = (props) => {
   }
   if (props.showPortfolio === true){
     showComponent = <Portfolio />
+    companyHeader = null;
   }
   return (
     <React.Fragment>
+      {companyHeader}
       {showComponent}
     </React.Fragment>
   );

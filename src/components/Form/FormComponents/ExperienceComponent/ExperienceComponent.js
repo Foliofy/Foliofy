@@ -36,6 +36,7 @@ const Experience = (props) => {
         validationSchema,
         onSubmit: () => {
             props.onAddButton(values);
+            // document.getElementById("next").disabled = false;
         }
     });
 
@@ -138,7 +139,7 @@ const Experience = (props) => {
                 </Form.Control.Feedback>
             </Form.Group>
             <Button type="submit">Add Experience</Button>
-            <Button onClick={() => props.onNextButton()}>NEXT</Button>
+            <Button id="next" onClick={() => props.onNextButton()}>NEXT</Button>
         </Form>
        
     </Container>
