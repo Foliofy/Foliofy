@@ -34,9 +34,14 @@ const Experience = (props) => {
             tasks: "",
             present: false
         },
+<<<<<<< HEAD
          validationSchema,
+=======
+        validationSchema,
+>>>>>>> efbdd4eed5a242e5523f3cca8cb221f9d114b8ca
         onSubmit: () => {
             props.onAddButton(values);
+            // document.getElementById("next").disabled = false;
         }
     });
 
@@ -139,7 +144,7 @@ const Experience = (props) => {
                 </Form.Control.Feedback>
             </Form.Group>
             <Button type="submit">Add Experience</Button>
-            <Button onClick={() => props.onNextButton()}>NEXT</Button>
+            <Button id="next" onClick={() => props.onNextButton()}>NEXT</Button>
         </Form>
        
     </Container>

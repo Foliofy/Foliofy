@@ -9,8 +9,10 @@ import Header from "../header/Header";
 import {BrowserRouter, Switch, Route, withRouter} from "react-router-dom";
 import { connect } from "react-redux";
 
+
 const form = (props) => {
   let showComponent = null;
+  let companyHeader = <Header />;
   if (props.showEducation === true){
     showComponent = <Education />
   }
@@ -22,6 +24,7 @@ const form = (props) => {
   }
   if (props.showPortfolio === true){
     showComponent = <Portfolio />
+    companyHeader = null;
   }
   return (
     <React.Fragment>
@@ -34,7 +37,9 @@ const form = (props) => {
             <Route  path="/Abilities" component={Abilities} />
           </Switch>
         </BrowserRouter>
-       {showComponent} 
+       {/* {showComponent}  */}
+      {companyHeader}
+      {/* {showComponent} */}
     </React.Fragment>
   );
 };

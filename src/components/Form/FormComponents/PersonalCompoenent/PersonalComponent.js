@@ -24,11 +24,9 @@ const validationSchema = Yup.object().shape({
     .required("Required"),
   headline: Yup.string().required("Required"),
   githubUrl: Yup.string()
-    .url("Enter a valid Url")
-    .required("Required"),
+    .url("Enter a valid Url"),
   linkedinUrl: Yup.string()
     .url("Enter a valid Url")
-    .required("Required")
 });
 
 
