@@ -4,6 +4,7 @@ import { Form, Button, Container, Col } from "react-bootstrap";
 import styles from "./ExperienceComponent.module.css"
 import * as Yup from "yup";
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -33,7 +34,7 @@ const Experience = (props) => {
             tasks: "",
             present: false
         },
-        // validationSchema,
+         validationSchema,
         onSubmit: () => {
             props.onAddButton(values);
         }
@@ -151,4 +152,4 @@ const mapDispatchToProps = dispatch => {
     };
   };
 
-export default connect(null, mapDispatchToProps)(Experience);
+export default withRouter(connect(null, mapDispatchToProps)(Experience));

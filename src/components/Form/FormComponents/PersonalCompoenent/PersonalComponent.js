@@ -4,6 +4,7 @@ import { Form, Button, Col, Container } from "react-bootstrap";
 import * as Yup from "yup";
 import styles from "./PersonalComponent.module.css";
 import { connect } from "react-redux";
+import {withRouter} from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   fullName: Yup.string()
@@ -189,4 +190,4 @@ const mapDispacthToPros = dispatch => {
   };
 };
 
-export default connect(null, mapDispacthToPros)(Personal);
+export default withRouter(connect(null, mapDispacthToPros)(Personal));

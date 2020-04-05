@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import styles from "./AbilitiesComponent.module.css";
 import {connect} from "react-redux";
-
+import {withRouter} from "react-router-dom";
 const validationSchema = Yup.object().shape({
   skills: Yup.string().required("Atleast one skill is required"),
   achievements: Yup.string().min(10, "Too Short!")
@@ -103,4 +103,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-export default connect(null,mapDispatchToProps)(Abilities);
+export default withRouter(connect(null,mapDispatchToProps)(Abilities));

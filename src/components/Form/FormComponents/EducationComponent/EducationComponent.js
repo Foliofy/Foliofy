@@ -4,6 +4,7 @@ import { Form, Button, Container, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 import styles from "./EducationComponent.module.css";
 import { connect } from "react-redux";
+import {withRouter} from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   instituteName: Yup.string()
@@ -203,4 +204,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Education);
+export default withRouter(connect(null, mapDispatchToProps)(Education));

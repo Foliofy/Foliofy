@@ -4,11 +4,13 @@ import Personal from "../Form/FormComponents/PersonalCompoenent/PersonalComponen
 import Education from "../Form/FormComponents/EducationComponent/EducationComponent";
 import Experience from "../Form/FormComponents/ExperienceComponent/ExperienceComponent";
 import Abilities from "../Form/FormComponents/AbilitiesComponent/AbilitiesComponent";
-import Portfolio from "../Portfolio/Portfolio"
+import Portfolio from "../Portfolio/Portfolio";
+import Header from "../header/Header";
+import {BrowserRouter, Switch, Route, withRouter} from "react-router-dom";
 import { connect } from "react-redux";
 
 const form = (props) => {
-  let showComponent = <Personal />;
+  let showComponent = null;
   if (props.showEducation === true){
     showComponent = <Education />
   }
@@ -23,7 +25,16 @@ const form = (props) => {
   }
   return (
     <React.Fragment>
-      {showComponent}
+      <BrowserRouter>
+         <Route component={Header} /> 
+          <Switch>
+            <Route  path="/Personal" component={Personal} />
+            <Route  path="/Education" component={Education} />
+            <Route  path="/Experience" component={Experience} />
+            <Route  path="/Abilities" component={Abilities} />
+          </Switch>
+        </BrowserRouter>
+       {showComponent} 
     </React.Fragment>
   );
 };
@@ -36,4 +47,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(form);
+export default withRouter(connect(mapStateToProps)(form));

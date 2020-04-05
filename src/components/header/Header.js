@@ -1,21 +1,35 @@
 import React from "react";
-import { Navbar } from "react-bootstrap";
+import { Navbar,Nav } from "react-bootstrap";
 import './Header.css';
-const header = () => (
-  <React.Fragment>
-    <Navbar className="Nav-Shadow" bg="light" variant="light">
-      <Navbar.Brand href="#home">Foliofy</Navbar.Brand>
-      {/* <Nav className="mr-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#features">Features</Nav.Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
-      </Nav> */}
-      {/* <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="outline-primary">Search</Button>
-      </Form> */}
-    </Navbar>
-  </React.Fragment>
-);
+import {Link} from "react-router-dom";
+class Header extends React.Component{
+  constructor(){
+    super();
+    this.state = {value: 'hello'}
+  }
+  
 
-export default header;
+  render() {
+    return (
+        <React.Fragment>
+          <Navbar className="Nav-Shadow" bg="light" variant="light">
+            <Navbar.Brand href="">Foliofy</Navbar.Brand>
+            <Nav className="mr-auto">
+                 <Nav.Link href="" ><Link to={"/Personal"}  >Personal</Link></Nav.Link> 
+                <Nav.Link href="" ><Link to={"/Education"}  >Education</Link></Nav.Link>
+                <Nav.Link href="" ><Link to={"/Experience"}  >Experience</Link></Nav.Link>
+                <Nav.Link href="" ><Link to={"/Abilities"}  >Abilities</Link></Nav.Link>
+                 
+            </Nav> 
+                    
+          </Navbar>
+    </React.Fragment>
+    );
+  };
+} 
+  
+
+
+export default Header;
+
+

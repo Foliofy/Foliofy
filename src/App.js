@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
-import Header from "../src/components/header/Header";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Form from "../src/components/Form/Form";
 import StartupPage from "../src/components/StartupPage/StartupPage";
 
  import Particles from "react-particles-js";
+ 
 
  const particleOpt = {
    particles : {
@@ -30,18 +31,24 @@ class App extends React.Component {
     });
   };
   render() {
-    let displayElement = <StartupPage changed={this.showFormHandler} />;
-    if (this.state.showForm) {
-      displayElement = <Form />;
-    } else {
-      displayElement = <StartupPage changed={this.showFormHandler} />;
-    }
+    let displayElement = <StartupPage  />;
+    // if (this.state.showForm) {
+    //   displayElement = <Form />;
+    // } else {
+    //   displayElement = <StartupPage  />;
+    // }
     return (
       <React.Fragment>
-        <Header />
+        <BrowserRouter> 
+        <Switch>
+              <Route exact path="/" component={StartupPage} />
+              <Route  path="/Form" component={Form} />
+          </Switch>
+          </BrowserRouter>
         <Particles params={particleOpt} className="Particle-Layer"/> 
         {/* <Particles className="Particle-Layer" /> */}
-        {displayElement}
+        
+         {/* {displayElement}  */}
       </React.Fragment>
     );
   }
